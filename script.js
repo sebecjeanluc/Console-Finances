@@ -6,13 +6,17 @@ console.log('Financial Analysis')
 console.log('-------------------')
 
 // get the total number of the months
-console.log('Total Months: ' + finances.length)
+var totalMonths = finances.length
+console.log('Total Months: ' + totalMonths)
 
 // set the current NET
 var currentNET = 0
 
+// set the monthsChanges
+var monthsChanges = 0
+
 // loop the dataset
-for (let i = 0; i < finances.length; i++) {
+for (let i = 0; i < totalMonths; i++) {
 	// add up the each month's net to the currentNET
 	currentNET = currentNET + finances[i][1]
 
@@ -23,12 +27,29 @@ for (let i = 0; i < finances.length; i++) {
 	// finances[2][1] - finances[3][1] = difference 3
 	// finances[i][1] - finances[i+1][1] = differences ?
 	// let's see what will result finances[i][1] - finances[i+1][1] = differences ?
-	var result = finances[i][1] - finances[i + 1][1]
-	console.log(result)
+	// var diffMonth = finances[i][1] - finances[i + 1][1]; console.log(diffMonth) -> the differences look good.
+	// But it throws an error of the last element and so set the if condition
+	if (i < totalMonths - 1) {
+		// In the western standard of the difference is usually negative, the equation should swap
+		var diffMonth = finances[i + 1][1] - finances[i][1]
+		// get the all differences (tracking the month to month difference)
+		// console.log(diffMonth)
+		// - got the difference with 85 months.
+		// let's add up to the total of changes
+		monthsChanges += diffMonth // try shorter equation
+	} else {
+		var diffMonth = finances[i][1] - 0
+	}
 }
+
 // show the final total months
 var totalNet = currentNET
 console.log('Total: $' + totalNet)
 
-// set the changes
-var monthlyChange = 0
+// get the totalChangesMonth
+// console.log("Total months' change: " + monthsChanges)
+var TotalMonthlyChange = monthsChanges / (totalMonths - 1)
+// get the 2 decimal
+TotalMonthlyChange = Math.round(TotalMonthlyChange * 100) / 100
+// show the monthly average change;
+console.log('Average Change: ' + TotalMonthlyChange)
