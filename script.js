@@ -15,6 +15,9 @@ var currentNET = 0
 // set the monthlyChanges
 var monthlyChanges = 0
 
+// set the highest number as profit
+var highestIncreaseDifference = 0
+
 // loop the dataset
 for (let i = 0; i < totalMonths; i++) {
 	// add up the each month's net to the currentNET
@@ -34,12 +37,19 @@ for (let i = 0; i < totalMonths; i++) {
 		var diffMonth = finances[i + 1][1] - finances[i][1]
 		// get the all differences (tracking the month to month difference)
 		// console.log(diffMonth)
-		// -> got the difference with 85 months.
+		// -> got the differences with 85 months.
 		// let's add up to the total of changes
 		monthlyChanges += diffMonth // try shorter equation
 	} else {
 		var diffMonth = finances[i][1] - 0
 	}
+
+	// Get the highest difference
+	// store the difference
+	// diff 1st = finances[0][1] - finances[1][1]
+	// store the bigger number
+	//diff 2 = diff 1st <  finances[1][1] - finances[2][1]
+	// continue
 }
 
 // show the final total months
@@ -53,3 +63,6 @@ var TotalMonthlyChange = monthlyChanges / (totalMonths - 1)
 TotalMonthlyChange = Math.round(TotalMonthlyChange * 100) / 100
 // show the monthly average change;
 console.log('Average Change: ' + TotalMonthlyChange)
+
+// show the highest increase from the monthly difference
+console.log('Greatest Increase in Profits/Losses: ' + highestIncreaseDifference)
