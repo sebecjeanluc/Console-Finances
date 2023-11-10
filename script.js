@@ -12,8 +12,8 @@ console.log('Total Months: ' + totalMonths)
 // set the current NET
 var currentNET = 0
 
-// set the monthsChanges
-var monthsChanges = 0
+// set the monthlyChanges
+var monthlyChanges = 0
 
 // loop the dataset
 for (let i = 0; i < totalMonths; i++) {
@@ -30,13 +30,13 @@ for (let i = 0; i < totalMonths; i++) {
 	// var diffMonth = finances[i][1] - finances[i + 1][1]; console.log(diffMonth) -> the differences look good.
 	// But it throws an error of the last element and so set the if condition
 	if (i < totalMonths - 1) {
-		// In the western standard of the difference is usually negative, the equation should swap
+		// In the western standard of the difference, the direction is usually negative. the equation should swap
 		var diffMonth = finances[i + 1][1] - finances[i][1]
 		// get the all differences (tracking the month to month difference)
 		// console.log(diffMonth)
-		// - got the difference with 85 months.
+		// -> got the difference with 85 months.
 		// let's add up to the total of changes
-		monthsChanges += diffMonth // try shorter equation
+		monthlyChanges += diffMonth // try shorter equation
 	} else {
 		var diffMonth = finances[i][1] - 0
 	}
@@ -47,8 +47,8 @@ var totalNet = currentNET
 console.log('Total: $' + totalNet)
 
 // get the totalChangesMonth
-// console.log("Total months' change: " + monthsChanges)
-var TotalMonthlyChange = monthsChanges / (totalMonths - 1)
+// console.log("Total months' change: " + monthlyChanges)
+var TotalMonthlyChange = monthlyChanges / (totalMonths - 1)
 // get the 2 decimal
 TotalMonthlyChange = Math.round(TotalMonthlyChange * 100) / 100
 // show the monthly average change;
