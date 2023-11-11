@@ -2,10 +2,10 @@ import { finances } from './dataset.js'
 // debug the dataset is imported correctly.
 // console.log(finances)
 
-console.log('Financial Analysis')
+console.log('F1nancial Analysis')
 console.log('-------------------')
 
-// get the total number of the months
+// GET THE TOTAL NUMBER OF THE MONTHS
 var totalMonths = finances.length
 console.log('Total Months: ' + totalMonths)
 
@@ -15,17 +15,19 @@ var currentNET = 0
 // set the monthlyChanges
 var monthlyChanges = 0
 
-// set the highest number as profit
-var maxIncrease = [['', 0], 0]
-var nextMonthRecord = ['', 0, 0]
-var previousMonthRecord = ['', 0, 0]
+// initialize the highest number as profit
+var maxIncrease = [['N/A', 0], 0]
+// initialize the lowest number as losses
+var maxDecrease = [['N/A', 0], 0]
+// initialize difference record in the next month with previous record
+var nextMonthRecord = ['N/A', 0, 0]
 
 // loop the dataset
 for (let i = 0; i < totalMonths; i++) {
-	// add up the each month's net to the currentNET
+	// ADD UP THE EACH MONTH's NET INTO the currentNET TO GET NET TOTAL
 	currentNET = currentNET + finances[i][1]
 
-	//Get the changes of previous month
+	//get the changes of previous month
 	// in order to get average change in P/L, you first need to get the difference from each month. So let's show the changes first.
 	// finances[0][1] - finances[1][1] = difference 1
 	// finances[1][1] - finances[2][1] = difference 2
@@ -47,7 +49,7 @@ for (let i = 0; i < totalMonths; i++) {
 		var diffMonth = finances[i][1] - 0
 	}
 
-	// Get the highest difference
+	// GET THE HIGHTEST DIFFERENCE
 	// store the diffMonth in the 2nd array in the nextMonth record
 	// the array structure[(date, sales), difference with previous month]
 	nextMonthRecord = [finances[i + 1], diffMonth]
@@ -55,6 +57,11 @@ for (let i = 0; i < totalMonths; i++) {
 	if (nextMonthRecord[1] > maxIncrease[1]) {
 		// update the array in maxIncrease((date, month), diffMonth)
 		maxIncrease = nextMonthRecord
+	}
+
+	// GET THE LOWEST DIFFERENCE
+	if (nextMonthRecord[1] < maxDecrease[1]) {
+		maxDecrease = nextMonthRecord
 	}
 }
 
@@ -70,11 +77,20 @@ TotalMonthlyChange = Math.round(TotalMonthlyChange * 100) / 100
 // show the monthly average change;
 console.log('Average Change: ' + TotalMonthlyChange)
 
-// show the highest increase from the monthly difference
+// M4: show the highest increase from the monthly difference
 console.log(
 	'Greatest Increase in Profits/Losses: ' +
 		maxIncrease[0][0] +
 		' ($' +
 		maxIncrease[1] +
+		')'
+)
+
+// show the lowest decrease from the monthly difference
+console.log(
+	'Lowest Decrease in Profits/Losses: ' +
+		maxDecrease[0][0] +
+		' ($' +
+		maxDecrease[1] +
 		')'
 )
