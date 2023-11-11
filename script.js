@@ -16,7 +16,9 @@ var currentNET = 0
 var monthlyChanges = 0
 
 // set the highest number as profit
-var highestIncreaseDifference = 0
+var maxIncrease = [['', 0], 0]
+var nextMonthRecord = ['', 0, 0]
+var previousMonthRecord = ['', 0, 0]
 
 // loop the dataset
 for (let i = 0; i < totalMonths; i++) {
@@ -34,6 +36,7 @@ for (let i = 0; i < totalMonths; i++) {
 	// But it throws an error of the last element and so set the if condition
 	if (i < totalMonths - 1) {
 		// In the western standard of the difference, the direction is usually negative. the equation should swap
+		//              nextMonthRec         previousMonthRec
 		var diffMonth = finances[i + 1][1] - finances[i][1]
 		// get the all differences (tracking the month to month difference)
 		// console.log(diffMonth)
@@ -45,11 +48,14 @@ for (let i = 0; i < totalMonths; i++) {
 	}
 
 	// Get the highest difference
-	// store the difference
-	// diff 1st = finances[0][1] - finances[1][1]
-	// store the bigger number
-	//diff 2 = diff 1st <  finances[1][1] - finances[2][1]
-	// continue
+	// store the diffMonth in the 2nd array in the nextMonth record
+	// the array structure[(date, sales), difference with previous month]
+	nextMonthRecord = [finances[i + 1], diffMonth]
+	// if nextMonthRec is bigger than previous month in the difference month value
+	if (nextMonthRecord[1] > maxIncrease[1]) {
+		// update the array in maxIncrease((date, month), diffMonth)
+		maxIncrease = nextMonthRecord
+	}
 }
 
 // show the final total months
@@ -65,4 +71,10 @@ TotalMonthlyChange = Math.round(TotalMonthlyChange * 100) / 100
 console.log('Average Change: ' + TotalMonthlyChange)
 
 // show the highest increase from the monthly difference
-console.log('Greatest Increase in Profits/Losses: ' + highestIncreaseDifference)
+console.log(
+	'Greatest Increase in Profits/Losses: ' +
+		maxIncrease[0][0] +
+		' ($' +
+		maxIncrease[1] +
+		')'
+)

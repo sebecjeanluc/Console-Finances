@@ -16,7 +16,7 @@ This is a Javascript practice for a bootcamp. In this practice, you will see the
 - [x] The average of the changes in Profit/Losses over the entire period.
   - [x] You will need to track what the total change in Profit/Losses are from month to month and then find the average.
   - [x] (Total/(Number of months - 1))
-- [] The greatest increase in Profit/Losses (date and amount) over the entire period.
+- [x] The greatest increase in Profit/Losses (date and amount) over the entire period.
 - [] The greatest decrease in Profit/Losses (date and amount) over the entire period.
 
 These roadmap will result the numbers below
