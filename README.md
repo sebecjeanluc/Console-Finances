@@ -19,7 +19,7 @@ This is a Javascript practice for a bootcamp. In this practice, you will see the
 - [x] The greatest increase in Profit/Losses (date and amount) over the entire period.
 - [x] The greatest decrease in Profit/Losses (date and amount) over the entire period.
 - [x] Refactor the variable names and comments, and logics.
-- [] Deploy to the Github pages.
+- [x] Deploy to the Github pages.
 
 These roadmap will result the numbers below
 
@@ -39,7 +39,11 @@ This is a Javascript practice for the bootcamp project.
 
 ### Brower Console Preview
 
-![Console](./preview.png) <!-- it will be added later -->
+![Console](./consoleFinances.png)
+
+#### This is the Github page
+
+[Console-Finances](https://sebecjeanluc.github.io/Console-Finances/)
 
 ### Credits
 
