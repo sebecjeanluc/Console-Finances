@@ -18,7 +18,8 @@ This is a Javascript practice for a bootcamp. In this practice, you will see the
   - [x] (Total/(Number of months - 1))
 - [x] The greatest increase in Profit/Losses (date and amount) over the entire period.
 - [x] The greatest decrease in Profit/Losses (date and amount) over the entire period.
-- [] Refactor the variable names and comments, and logics.
+- [x] Refactor the variable names and comments, and logics.
+- [] Deploy to the Github pages.
 
 These roadmap will result the numbers below
 
